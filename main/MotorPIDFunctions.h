@@ -14,6 +14,6 @@ void motor_off();
 void motor_move(int,int);
 void pid_reset();
 int pid(float);
-
+void motor_basic();
 
 #endif

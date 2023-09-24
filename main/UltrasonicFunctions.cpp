@@ -1,4 +1,4 @@
-#include "UltrasonicFunctions.h"
+#include "UltraSonicFunctions.h"
 
 const int leftPing = A0;
 const int leftEcho = A1;

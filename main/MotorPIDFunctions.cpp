@@ -61,8 +61,8 @@ void motor_B_set( int speed ) {
 }
 
 void motor_off() {
-  digitalWrite( MOTOR_A_IN1, LOW );
-  digitalWrite( MOTOR_A_IN2, LOW );
+  digitalWrite( MOTOR_A_ENA, 0 );
+  digitalWrite( MOTOR_B_ENA, 0 );
 }
 
 void motor_move(int speed,int delta) {
@@ -72,7 +72,10 @@ void motor_move(int speed,int delta) {
   motor_B_set(speed + delta);
 }
 
-
+void motor_basic(){
+  motor_A_set(250);
+  motor_B_set(250);
+}
 
 #define PID_K_p 5
 #define PID_K_i  0.1

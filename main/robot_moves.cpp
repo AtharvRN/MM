@@ -51,6 +51,7 @@ void moveForward(int cells = 1) {
       int steer = (int)pid(currYaw - prevYaw);
       prevYaw = currYaw;
       motor_move(200,steer);  
+      Serial.println(steer);
 
       unsigned long ticksA =  get_tickA() - init_ticksA;
       unsigned long ticksB =  get_tickB() - init_ticksB;
@@ -61,15 +62,15 @@ void moveForward(int cells = 1) {
     motor_off();  
 }
 
-void setup(){
-  motor_begin();
-  setupEncoders();
-  setup_ultrasonic();
-  pid_reset();
+// void setup(){
+//   motor_begin();
+//   setupEncoders();
+//   setup_ultrasonic();
+//   pid_reset();
 
-}
+// }
 
-void loop(){
+// void loop(){
 
 
-}
+// }
