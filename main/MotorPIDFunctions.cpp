@@ -29,6 +29,8 @@ void motor_begin() {
 }
 
 void motor_A_set( int speed ) {
+  // Serial.print("Speed : ");
+  // Serial.println(speed);
   if( speed==0 ) {
     digitalWrite( MOTOR_A_IN1, HIGH );
     digitalWrite( MOTOR_A_IN2, HIGH );
@@ -66,10 +68,31 @@ void motor_off() {
 }
 
 void motor_move(int speed,int delta) {
-  if( delta> MAX_SPEED -speed ) delta= MAX_SPEED -speed;
-  if( delta< MAX_SPEED + speed ) delta= MAX_SPEED + speed;
-  motor_A_set(speed - delta);
-  motor_B_set(speed + delta);
+  // Serial.print("speed : ");
+  // Serial.println(speed);
+  // Serial.print("delta :" );
+  // Serial.print(delta);
+  int setL = speed + delta;
+  int setR = speed - delta;
+  if( setL> MAX_SPEED) 
+      setL = MAX_SPEED;
+  if( setR> MAX_SPEED) 
+      setR = MAX_SPEED;
+  if( setL < -MAX_SPEED) 
+      setL = -MAX_SPEED;
+  if( setR < -MAX_SPEED) 
+      setR = -MAX_SPEED;
+
+  // Serial.print("delta : ");
+  // Serial.println(delta);
+  // Serial.print("Left:");
+  // Serial.println(setL);
+
+  // Serial.print("Right:");
+  // Serial.println(setR);
+
+  motor_A_set(setL);
+  motor_B_set(setR );
 }
 
 void motor_basic(){
@@ -77,9 +100,9 @@ void motor_basic(){
   motor_B_set(250);
 }
 
-#define PID_K_p 5
-#define PID_K_i  0.1
-#define PID_K_d  1
+#define PID_K_p 2
+#define PID_K_i  0
+#define PID_K_d  0
 
 float i_input;
 float d_last;

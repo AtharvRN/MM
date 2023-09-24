@@ -4,7 +4,7 @@
 #include "EncoderFunctions.h"
 #include "MotorPIDFunctions.h"
 #include "robot_moves.h"
-// #include "floodfill.h"
+#include "floodfill.h"
 
 
 // // all distances in mm
@@ -66,20 +66,42 @@
 void setup(){
   Serial.begin(115200);
   motor_begin();
-
-  // setupEncoders();
-  // setup_ultrasonic();
-  // pid_reset();
+  mpu6050_begin();
+  setupEncoders();
+  setup_ultrasonic();
+  pid_reset();
   // gotoTarget(0, 0, DIR_UP);
+  // delay(5000);
+  // // moveForward();
+  // turnRight();
+  // Serial.println("dsd");
+  // delay(1000);
+  // turnRight();
+  // delay(1000);
+  // turnRight();
+  // delay(1000);
+  // turnRight();
+  // delay(1000);
+  // turnLeft();
+  // delay(1000);
+  // turnLeft();
+  // turnRight();
+  // turnRight();
+
+  // motor_A_set(100);
+  // motor_B_set(-100);
+  // motor_basic();
+  // delay(1000);
+  // motor_off();
 
 }
 
 void loop(){
 
   // moveForward(1);
-  delay(1000);
-  motor_basic();
-  delay(1000);
-  motor_off();
+  // delay(1000);
+  // moveForward();
+  // delay(1000);
+  // motor_off();
 
 }

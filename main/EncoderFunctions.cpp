@@ -1,7 +1,7 @@
 #include "EncoderFunctions.h"
 
-const int encoderPinA = 2; 
-const int encoderPinB = 3;  
+const int encoderPinA = 3; 
+const int encoderPinB = 2;  
 
 volatile unsigned long encoderTicksA = 0;
 volatile unsigned long encoderTicksB = 0;
