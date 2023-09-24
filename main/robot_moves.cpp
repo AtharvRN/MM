@@ -1,10 +1,9 @@
+#include "robot_moves.h"
+
 #include <Wire.h>
 #include "mpu6050.h"
-#include "UltrasonicFunctions.h"
 #include "EncoderFunctions.h"
 #include "MotorPIDFunctions.h"
-#include "floodfill.h"
-
 
 // all distances in mm
 #define CELL_SIZE 150
@@ -67,7 +66,6 @@ void setup(){
   setupEncoders();
   setup_ultrasonic();
   pid_reset();
-  gotoTarget(0, 0, DIR_UP);
 
 }
 
