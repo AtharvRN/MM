@@ -3,7 +3,7 @@
 
 #include "Arduino.h"
 #include <Wire.h>
-#include <mpu6050.h>
+#include "mpu6050.h"
 
 void mpu6050_begin();
 float mpu6050_yaw();
