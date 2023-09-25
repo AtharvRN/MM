@@ -3,7 +3,8 @@
 
 #include "Arduino.h"
 
-#define WALL_THRESHOLD 20  // in cm
+#define WALL_THRESHOLD_FRONT 10  // in cm
+#define WALL_THRESHOLD_SIDE  10  // in cm
 
 int ultrasonicDistance(int triggerPin, int echoPin);
 bool wallFront();

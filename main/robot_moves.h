@@ -5,6 +5,5 @@
 void turnRight();
 
 void turnLeft();
-
-void moveForward(int cells = 1);
+void moveForward(int target = 600);
 

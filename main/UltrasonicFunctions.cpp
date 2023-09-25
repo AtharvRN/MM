@@ -1,11 +1,37 @@
 #include "UltraSonicFunctions.h"
 
-const int leftPing = A0;
-const int leftEcho = A1;
-const int rightPing = 7;
-const int rightEcho = 6;
-const int centrePing = A2;
-const int centreEcho = A3;
+// const int leftPing = A0;
+// const int leftEcho = A1;
+const int centrePing = 7;
+const int centreEcho = 6;
+// const int rightPing = A2;
+// const int rightEcho = A3;
+
+const int rightPing = A0;
+const int rightEcho = A1;
+const int leftPing = A2;
+const int leftEcho = A3;
+bool wallFront() {
+  // Serial.print('Centre :');
+  int distance = ultrasonicDistance(centrePing, centreEcho);
+  // Serial.println(distance);
+  return ultrasonicDistance(centrePing, centreEcho) < WALL_THRESHOLD_FRONT;
+}
+
+bool wallRight() {
+  int distance = ultrasonicDistance(rightPing, rightEcho);
+  // Serial.print('Right :');
+  // Serial.println(distance);
+  return distance < WALL_THRESHOLD_SIDE;
+}
+
+bool wallLeft() {
+  // Serial.print('Left :');
+  int distance = ultrasonicDistance(leftPing, leftEcho);
+  // Serial.println(distance); 
+  // Serial.println(ultrasonicDistance(leftPing, leftEcho));
+    return ultrasonicDistance(leftPing, leftEcho) < WALL_THRESHOLD_SIDE;
+}
 
 int ultrasonicDistance(int triggerPin, int echoPin) {
     digitalWrite(triggerPin, LOW);
@@ -17,17 +43,7 @@ int ultrasonicDistance(int triggerPin, int echoPin) {
     return duration * 0.034 / 2;
 }
 
-bool wallFront() {
-    return ultrasonicDistance(centrePing, centreEcho) < WALL_THRESHOLD;
-}
 
-bool wallRight() {
-    return ultrasonicDistance(rightPing, rightEcho) < WALL_THRESHOLD;
-}
-
-bool wallLeft() {
-    return ultrasonicDistance(leftPing, leftEcho) < WALL_THRESHOLD;
-}
 void setup_ultrasonic(){
     pinMode(leftPing, OUTPUT);
     pinMode(leftEcho, INPUT);

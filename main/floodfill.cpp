@@ -2,8 +2,8 @@
 #include "Queue.h"
 
 const short size_x = 10, size_y = 10;
-const short tx = 5, ty = 5;
-const short max_size = 15;
+const short tx = 5, ty = 0;
+const short max_size = 12;
 
 #define DIR_UP 0
 #define DIR_RIGHT 1
@@ -146,12 +146,14 @@ class grid_struct {
 
         void flood_fill() {
             while (cx != tx || cy != ty) {
+                delay(1000);
                 flood_fill_step();
             }
         }
 };
 
 void gotoTarget(short cx, short cy, short cdir) {
+    Serial.println("floodfill");
     grid_struct g(cx, cy, cdir);
     g.flood_fill();
 }
